@@ -54,6 +54,7 @@ RSpec.describe Deck do
         deck.add_card(card4)
 
         expect(deck.cards[3]).to eq(card4)
+        p deck 
     end 
 
 
