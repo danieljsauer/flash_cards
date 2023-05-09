@@ -10,7 +10,7 @@ class Deck
     end 
 
     def count
-        @cards.length 
+        cards.length 
     end 
 
 
