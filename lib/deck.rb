@@ -1,12 +1,9 @@
 class Deck 
 
     attr_reader :cards
-    #attr_accessor 
 
     def initialize(cards)
         @cards = cards
-        #Why dont I have to declare cards as an array here? Like we did for dog toys?
-        #Is it because we are passing through an array and not entering information into one? 
     end 
 
     def count
@@ -18,8 +15,11 @@ class Deck
         #Would this belong in cards? 
     end 
 
-    def cards_in_category
-
-    end 
+    def cards_in_category(category)
+        cic = cards.find_all do |card|
+            card.category == category
+            end 
+        cic.count
+    end
 
 end
