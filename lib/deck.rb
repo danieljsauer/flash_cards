@@ -14,11 +14,6 @@ class Deck
         cards << card 
     end 
 
-
-    def make_deck
-        #Would this belong in cards? 
-    end 
-
     def cards_in_category(category)
         cic = cards.find_all do |card|
             card.category == category
