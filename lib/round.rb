@@ -11,7 +11,9 @@ class Round
     def take_turn(guess) 
 
         card = deck.cards.shift
-        Turn.new(guess, card) 
+        turn = Turn.new(guess, card) 
+        turns << turn 
+        return turn 
     end
 
     # 1. read the card
@@ -27,7 +29,6 @@ class Round
     def current_question
         deck.cards[0].question
     end 
-
 
 end
 

@@ -84,5 +84,51 @@ describe Round do
             new_turn = round.take_turn("denver")
             expect(new_turn).to be_instance_of(Turn) 
         end
+
+        it "checks for correct answer" do 
+            card1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+            card2 = Card.new("First US President?", "Washington", :history)
+            card3 = Card.new("Best House?", "Lannister", :fiction)
+
+            cards = [card1, card2, card3]
+
+            deck = Deck.new(cards)
+            round = Round.new(deck)
+            new_turn = round.take_turn("denver")
+            expect(new_turn.feedback).to eq("WRONG!") 
+        end
+
+        it "moves on to the next card" do 
+            card1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+            card2 = Card.new("First US President?", "Washington", :history)
+            card3 = Card.new("Best House?", "Lannister", :fiction)
+
+            cards = [card1, card2, card3]
+
+            deck = Deck.new(cards)
+            round = Round.new(deck)
+            new_turn = round.take_turn("denver")
+            new_turn = round.take_turn("Washington")
+            expect(new_turn.feedback).to eq("Correct!") 
+
+        end
+
+        it "keeps track of the number of turns" do
+            card1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+            card2 = Card.new("First US President?", "Washington", :history)
+            card3 = Card.new("Best House?", "Lannister", :fiction)
+
+            cards = [card1, card2, card3]
+
+            deck = Deck.new(cards)
+            round = Round.new(deck)
+            new_turn = round.take_turn("denver")
+            new_turn = round.take_turn("Washington")
+            expect(round.turns.count).to eq(2) 
+        end 
+
+
+
+
     end 
 end 
